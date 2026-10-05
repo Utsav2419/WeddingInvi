@@ -844,7 +844,7 @@
                     border: 1px solid rgba(212,175,55,.3);
                     overflow: hidden;
                     opacity: 0;
-                    transform: translateY(70px);
+                    transform: translateY(0);
                     transition: opacity .8s ease,transform .8s ease,box-shadow .4s ease
                 }
 
@@ -1431,6 +1431,77 @@
                         transition: none
                     }
                 }
+        /* MOBILE SCROLL + RESPONSIVE FIX */
+        html,
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            overflow-anchor: none;
+        }
+
+        body {
+            position: relative;
+        }
+
+        @media (max-width: 991.98px) {
+            .container,
+            .container-fluid {
+                width: 100%;
+                max-width: 100%;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .hero,
+            .section,
+            .invitation-section,
+            .ceremony-section,
+            .countdown-section,
+            .couple-section,
+            .events-section {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .hero {
+                min-height: 100svh;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .couple-image {
+                width: min(230px, 80vw);
+                height: auto;
+                aspect-ratio: 230 / 390;
+            }
+
+            .section-title {
+                font-size: clamp(1.8rem, 8vw, 2.5rem);
+            }
+
+            .couple-names {
+                font-size: clamp(1.5rem, 8vw, 2.3rem);
+            }
+
+            .event-card,
+            .ceremony-card,
+            .invitation-card {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 
@@ -1795,6 +1866,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
                 target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
             });
 });
+// PREVENT MOBILE SCROLL JUMP
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+let lastScrollY = window.scrollY;
+
+window.addEventListener('scroll', () => {
+    lastScrollY = window.scrollY;
+}, { passive: true });
+
     </script>
 </body>
 </html>
