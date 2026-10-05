@@ -29,3 +29,4 @@ C:\Users\utsav\source\repos\Weddinginv\Weddinginv\obj\Debug\net8.0\Weddinginv.pd
 C:\Users\utsav\source\repos\Weddinginv\Weddinginv\obj\Debug\net8.0\Weddinginv.genruntimeconfig.cache
 C:\Users\utsav\source\repos\Weddinginv\Weddinginv\obj\Debug\net8.0\ref\Weddinginv.dll
 C:\Users\utsav\source\repos\Weddinginv\Weddinginv\obj\Debug\net8.0\Weddinginv.csproj.Up2Date
+C:\Users\utsav\source\repos\Weddinginv\Weddinginv\obj\Debug\net8.0\Weddinginv.sourcelink.json
