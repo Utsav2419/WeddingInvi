@@ -1511,86 +1511,100 @@
         <p class="footer-text">Aarav & Kavya</p>
     </footer>
 
-    <!-- BOOTSTRAP JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // LOADER (gate opens after the bar fills)
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hide');
-            }, 1600);
-        });
+                // Declare bootstrap for TypeScript
+                declare var bootstrap: any;
 
-        // PARTICLES & PETALS
-        function createParticle() {
-            const particles = document.getElementById('particles');
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
-            particles.appendChild(particle);
-            setTimeout(() => particle.remove(), 7000);
-        }
+                // LOADER (gate opens after the bar fills)
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        const loader = document.getElementById('loader');
+                        if (loader) {
+                            loader.classList.add('hide');
+                        }
+                    }, 1600);
+                });
 
-        function createPetal() {
-            const particles = document.getElementById('particles');
-            const petal = document.createElement('div');
-            petal.classList.add('petal');
-            petal.style.left = Math.random() * 100 + '%';
-            petal.style.animationDuration = (Math.random() * 4 + 5) + 's';
-            particles.appendChild(petal);
-            setTimeout(() => petal.remove(), 9000);
-        }
-
-        setInterval(createParticle, 400);
-        setInterval(createPetal, 600);
-
-        // COUNTDOWN TIMER
-        // COUNTDOWN TIMER
-        const weddingDate = new Date('2027-02-21T19:30:00').getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = Math.max(0, weddingDate - now);
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // SCROLL ANIMATIONS FOR EVENT CARDS
-        const eventCardObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    eventCardObserver.unobserve(entry.target);
+                // PARTICLES & PETALS
+                function createParticle() {
+                    const particles = document.getElementById('particles');
+                    if (particles) {
+                        const particle = document.createElement('div');
+                        particle.classList.add('particle');
+                        particle.style.left = Math.random() * 100 + '%';
+                        particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                        particles.appendChild(particle);
+                        setTimeout(() => particle.remove(), 7000);
+                    }
                 }
-            });
-        }, { threshold: 0.2 });
 
-        document.querySelectorAll('.event-card').forEach(card => {
-            eventCardObserver.observe(card);
-        });
-
-        // SMOOTH NAVBAR COLLAPSE ON LINK CLICK
-        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const nav = document.getElementById('mainNav');
-                if (nav.classList.contains('show')) {
-                    bootstrap.Collapse.getOrCreateInstance(nav).hide();
+                function createPetal() {
+                    const particles = document.getElementById('particles');
+                    if (particles) {
+                        const petal = document.createElement('div');
+                        petal.classList.add('petal');
+                        petal.style.left = Math.random() * 100 + '%';
+                        petal.style.animationDuration = (Math.random() * 4 + 5) + 's';
+                        particles.appendChild(petal);
+                        setTimeout(() => petal.remove(), 9000);
+                    }
                 }
-            });
-        });
+
+                setInterval(createParticle, 400);
+                setInterval(createPetal, 600);
+
+                // COUNTDOWN TIMER
+                const weddingDate = new Date('2027-02-21T19:30:00').getTime();
+
+                function updateCountdown() {
+                    const now = new Date().getTime();
+                    const distance = Math.max(0, weddingDate - now);
+
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    const daysEl = document.getElementById('days');
+                    const hoursEl = document.getElementById('hours');
+                    const minutesEl = document.getElementById('minutes');
+                    const secondsEl = document.getElementById('seconds');
+
+                    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+                    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+                    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+                    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+                }
+
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+
+                // SCROLL ANIMATIONS FOR EVENT CARDS
+                const eventCardObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('show');
+                            eventCardObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                document.querySelectorAll('.event-card').forEach(card => {
+                    eventCardObserver.observe(card);
+                });
+
+                // SMOOTH NAVBAR COLLAPSE ON LINK CLICK
+                document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        const nav = document.getElementById('mainNav');
+                        if (nav && nav.classList.contains('show')) {
+                            const collapseInstance = bootstrap.Collapse.getOrCreateInstance(nav);
+                            collapseInstance.hide();
+                        }
+                    });
+                });
     </script>
 </body>
 </html>
