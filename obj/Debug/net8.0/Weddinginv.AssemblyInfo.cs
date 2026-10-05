@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Weddinginv")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b01f4cf2ebe767a640dfc748ce3b1b1633c68f89")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0c42b1d68d7925f96b6ac9d4913b9e5477d9a66")]
 [assembly: System.Reflection.AssemblyProductAttribute("Weddinginv")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Weddinginv")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
